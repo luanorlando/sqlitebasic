@@ -11,11 +11,11 @@ import UIKit
 
 class SQLiteModel
 {
-    var name: String
-    var occupation: String
-    var level: String
-    var age: Int
-    var register: Int
+    private var name: String
+    private var occupation: String
+    private var level: String
+    private var age: Int
+    private var register: Int
     
     init(name: String, occupation: String, level: String, age: Int, register: Int)
     {
@@ -34,4 +34,55 @@ class SQLiteModel
         self.age = 0
         self.register = 0
     }
+    
+    public func setName(_ name: String)
+    {
+        self.name = name
+    }
+    
+    public func getName() -> String
+    {
+        return self.name
+    }
+    //
+    public func setOccupation(_ occupation: String)
+    {
+        self.occupation = occupation
+    }
+    
+    public func getOccupation() -> String
+    {
+        return self.occupation
+    }
+    //
+    public func setLevel(_ level: String)
+    {
+        self.level = level
+    }
+    
+    public func getLevel() -> String
+    {
+        return self.level
+    }
+    //
+    public func setAge(_ age: Int)
+    {
+        self.age = age
+    }
+    
+    public func getAge() -> Int
+    {
+        return self.age
+    }
+    //
+    public func setRegister(_ register: Int)
+    {
+        self.register = register
+    }
+    
+    public func getRegister() -> Int
+    {
+        return self.register
+    }
+    //
 }

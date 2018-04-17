@@ -16,6 +16,7 @@
 		1F969D7F2084C46400C79804 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F969D7E2084C46400C79804 /* libsqlite3.tbd */; };
 		1F969D872084C67500C79804 /* MySQlite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F969D862084C67500C79804 /* MySQlite.swift */; };
 		1F969D892084E05F00C79804 /* NewEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F969D882084E05F00C79804 /* NewEmployeeViewController.swift */; };
+		1FA8462F2086361B0009C497 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA8462E2086361B0009C497 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		1F969D842084C4AE00C79804 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1F969D862084C67500C79804 /* MySQlite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQlite.swift; sourceTree = "<group>"; };
 		1F969D882084E05F00C79804 /* NewEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmployeeViewController.swift; sourceTree = "<group>"; };
+		1FA8462E2086361B0009C497 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				1F969D6B2084C43E00C79804 /* AppDelegate.swift */,
 				1F013DB32084E313002C3B51 /* ListEmployesViewController.swift */,
 				1F969D882084E05F00C79804 /* NewEmployeeViewController.swift */,
+				1FA8462E2086361B0009C497 /* DetailsViewController.swift */,
 				1F969D842084C4AE00C79804 /* Header.h */,
 				1F4C9FF1208525AC00E96996 /* Model */,
 				1F969D8C2084E08C00C79804 /* SQLite */,
@@ -184,6 +187,7 @@
 				1F969D6C2084C43E00C79804 /* AppDelegate.swift in Sources */,
 				1F969D892084E05F00C79804 /* NewEmployeeViewController.swift in Sources */,
 				1F013DB42084E313002C3B51 /* ListEmployesViewController.swift in Sources */,
+				1FA8462F2086361B0009C497 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

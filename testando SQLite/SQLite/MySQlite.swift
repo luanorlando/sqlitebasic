@@ -132,7 +132,7 @@ class MySQLite
         
         if sqlite3_exec(dataBase, query, nil, nil, nil) == SQLITE_OK
         {
-            msg = "Coloaborador\(name), que ocupará o cargo de \(occupation), (\(level)), tem \(age) anos de idade, o número de seu registro será \(register). Agora \(name) faz parte da equipe ☺️"
+            msg = "Coloaborador \(name), que ocupará o cargo de \(occupation) (\(level)), tem \(age) anos de idade, o número de seu registro será \(register). Agora \(name) faz parte da equipe ☺️"
             
             print("\(name), \(occupation), \(level), \(age) has been added successfuly")
             

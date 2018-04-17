@@ -24,8 +24,6 @@ class NewEmployeeViewController: UIViewController
     
     var array = ["Estágiario", "Trainee", "Júnior", "Pleno", "Senior", "Análista"]
     
-
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()

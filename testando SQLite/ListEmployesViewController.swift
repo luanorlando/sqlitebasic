@@ -18,6 +18,7 @@ class ListEmployesViewController: UIViewController
     var array: [SQLiteModel] = []
     
     let database = MySQLite()
+    var object = SQLiteModel()
     
     override func viewDidLoad()
     {
@@ -42,6 +43,19 @@ class ListEmployesViewController: UIViewController
         self.tableView.reloadData()
         print(self.array)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "segueDetails"
+        {
+            let vc = segue.destination as! DetailsViewController
+            vc.name = self.object.getName()
+            vc.age = self.object.getAge()
+            vc.occupation = self.object.getOccupation()
+            vc.level = self.object.getLevel()
+            vc.register = self.object.getRegister()
+        }
     }
 
 }
@@ -87,6 +101,18 @@ extension ListEmployesViewController: UITableViewDelegate, UITableViewDataSource
         return self.array.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.object.setName(self.array[indexPath.row].getName())
+        self.object.setAge(self.array[indexPath.row].getAge())
+        self.object.setOccupation(self.array[indexPath.row].getOccupation())
+        self.object.setLevel(self.array[indexPath.row].getLevel())
+        self.object.setRegister(self.array[indexPath.row].getRegister())
+        
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "segueDetails", sender: nil)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -96,7 +122,8 @@ extension ListEmployesViewController: UITableViewDelegate, UITableViewDataSource
 //            cell.textLabel?.text = name
 //        }
         
-        cell.textLabel?.text = self.array[indexPath.row].name
+        
+        cell.textLabel?.text = self.array[indexPath.row].getName()
         
         return cell
     }
@@ -106,22 +133,11 @@ extension ListEmployesViewController: UITableViewDelegate, UITableViewDataSource
         return true
     }
     
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
-//    {
-//        let delete = UITableViewRowAction(style: .destructive, title: "Deletar") { (action, index) in
-//
-//            self.database.delete(register: self.array[indexPath.row].register)
-//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//
-//        }
-//
-//        return [delete]
-//    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            self.database.delete(register: self.array[indexPath.row].register)
+            self.database.delete(register: self.array[indexPath.row].getRegister())
             self.array.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             
