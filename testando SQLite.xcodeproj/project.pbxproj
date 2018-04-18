@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1F013DB42084E313002C3B51 /* ListEmployesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F013DB32084E313002C3B51 /* ListEmployesViewController.swift */; };
 		1F4C9FF3208525CA00E96996 /* SQliteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C9FF2208525CA00E96996 /* SQliteModel.swift */; };
+		1F72623C20877FFE003F2D66 /* UpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72623B20877FFE003F2D66 /* UpdatesViewController.swift */; };
+		1F72623E2087A7A8003F2D66 /* DetailsSearchedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72623D2087A7A8003F2D66 /* DetailsSearchedsViewController.swift */; };
+		1F7262402087AF4B003F2D66 /* DetailsSearched2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72623F2087AF4B003F2D66 /* DetailsSearched2ViewController.swift */; };
+		1F7262472087B0D9003F2D66 /* Details2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7262452087B0D9003F2D66 /* Details2TableViewCell.swift */; };
+		1F7262482087B0D9003F2D66 /* Details2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7262462087B0D9003F2D66 /* Details2TableViewCell.xib */; };
 		1F969D6C2084C43E00C79804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F969D6B2084C43E00C79804 /* AppDelegate.swift */; };
 		1F969D712084C43F00C79804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F969D6F2084C43F00C79804 /* Main.storyboard */; };
 		1F969D732084C44200C79804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F969D722084C44200C79804 /* Assets.xcassets */; };
@@ -23,6 +28,11 @@
 		1F013DB32084E313002C3B51 /* ListEmployesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEmployesViewController.swift; sourceTree = "<group>"; };
 		1F4C9FF2208525CA00E96996 /* SQliteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQliteModel.swift; sourceTree = "<group>"; };
 		1F4C9FF42085292F00E96996 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
+		1F72623B20877FFE003F2D66 /* UpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesViewController.swift; sourceTree = "<group>"; };
+		1F72623D2087A7A8003F2D66 /* DetailsSearchedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSearchedsViewController.swift; sourceTree = "<group>"; };
+		1F72623F2087AF4B003F2D66 /* DetailsSearched2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSearched2ViewController.swift; sourceTree = "<group>"; };
+		1F7262452087B0D9003F2D66 /* Details2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details2TableViewCell.swift; sourceTree = "<group>"; };
+		1F7262462087B0D9003F2D66 /* Details2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Details2TableViewCell.xib; sourceTree = "<group>"; };
 		1F969D682084C43E00C79804 /* testando SQLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "testando SQLite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F969D6B2084C43E00C79804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F969D702084C43F00C79804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,9 +62,32 @@
 		1F4C9FF1208525AC00E96996 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F969D862084C67500C79804 /* MySQlite.swift */,
 				1F4C9FF2208525CA00E96996 /* SQliteModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7262412087AF63003F2D66 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F013DB32084E313002C3B51 /* ListEmployesViewController.swift */,
+				1F969D882084E05F00C79804 /* NewEmployeeViewController.swift */,
+				1FA8462E2086361B0009C497 /* DetailsViewController.swift */,
+				1F72623B20877FFE003F2D66 /* UpdatesViewController.swift */,
+				1F72623D2087A7A8003F2D66 /* DetailsSearchedsViewController.swift */,
+				1F72623F2087AF4B003F2D66 /* DetailsSearched2ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7262422087AFB2003F2D66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F7262452087B0D9003F2D66 /* Details2TableViewCell.swift */,
+				1F7262462087B0D9003F2D66 /* Details2TableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1F969D5F2084C43E00C79804 = {
@@ -79,12 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				1F969D6B2084C43E00C79804 /* AppDelegate.swift */,
-				1F013DB32084E313002C3B51 /* ListEmployesViewController.swift */,
-				1F969D882084E05F00C79804 /* NewEmployeeViewController.swift */,
-				1FA8462E2086361B0009C497 /* DetailsViewController.swift */,
 				1F969D842084C4AE00C79804 /* Header.h */,
 				1F4C9FF1208525AC00E96996 /* Model */,
-				1F969D8C2084E08C00C79804 /* SQLite */,
+				1F7262422087AFB2003F2D66 /* View */,
+				1F7262412087AF63003F2D66 /* Controller */,
 				1F969D6F2084C43F00C79804 /* Main.storyboard */,
 				1F969D722084C44200C79804 /* Assets.xcassets */,
 				1F969D742084C44200C79804 /* LaunchScreen.storyboard */,
@@ -100,14 +131,6 @@
 				1F969D7E2084C46400C79804 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1F969D8C2084E08C00C79804 /* SQLite */ = {
-			isa = PBXGroup;
-			children = (
-				1F969D862084C67500C79804 /* MySQlite.swift */,
-			);
-			path = SQLite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F969D762084C44200C79804 /* LaunchScreen.storyboard in Resources */,
+				1F7262482087B0D9003F2D66 /* Details2TableViewCell.xib in Resources */,
 				1F969D732084C44200C79804 /* Assets.xcassets in Resources */,
 				1F969D712084C43F00C79804 /* Main.storyboard in Resources */,
 			);
@@ -184,9 +208,13 @@
 			files = (
 				1F4C9FF3208525CA00E96996 /* SQliteModel.swift in Sources */,
 				1F969D872084C67500C79804 /* MySQlite.swift in Sources */,
+				1F7262402087AF4B003F2D66 /* DetailsSearched2ViewController.swift in Sources */,
+				1F72623C20877FFE003F2D66 /* UpdatesViewController.swift in Sources */,
 				1F969D6C2084C43E00C79804 /* AppDelegate.swift in Sources */,
 				1F969D892084E05F00C79804 /* NewEmployeeViewController.swift in Sources */,
 				1F013DB42084E313002C3B51 /* ListEmployesViewController.swift in Sources */,
+				1F7262472087B0D9003F2D66 /* Details2TableViewCell.swift in Sources */,
+				1F72623E2087A7A8003F2D66 /* DetailsSearchedsViewController.swift in Sources */,
 				1FA8462F2086361B0009C497 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

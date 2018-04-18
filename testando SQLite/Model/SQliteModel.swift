@@ -11,14 +11,16 @@ import UIKit
 
 class SQLiteModel
 {
+    private var id: Int
     private var name: String
     private var occupation: String
     private var level: String
     private var age: Int
     private var register: Int
     
-    init(name: String, occupation: String, level: String, age: Int, register: Int)
+    init(name: String, occupation: String, level: String, age: Int, register: Int, id: Int)
     {
+        self.id = id
         self.name = name
         self.occupation = occupation
         self.level = level
@@ -28,6 +30,7 @@ class SQLiteModel
     
     init()
     {
+        self.id = 0
         self.name = ""
         self.occupation = ""
         self.level = ""
@@ -35,6 +38,15 @@ class SQLiteModel
         self.register = 0
     }
     
+    public func setId(_ id: Int)
+    {
+        self.id = id
+    }
+    public func getId() -> Int
+    {
+        return self.id
+    }
+    //
     public func setName(_ name: String)
     {
         self.name = name

@@ -8,15 +8,17 @@
 
 import Foundation
 
-let caminhoParaSandBox = NSHomeDirectory()
-let pathDocuments = (caminhoParaSandBox as NSString).appendingPathComponent("Documents")
-let pathArquivo = (pathDocuments as NSString).appendingPathComponent("arquivo.sqlite")
+let pathSandBox = NSHomeDirectory()
+let pathDocuments = (pathSandBox as NSString).appendingPathComponent("Documents")
+let pathArchive = (pathDocuments as NSString).appendingPathComponent("archive.sqlite")
 
 var dataBase: OpaquePointer? = nil
 
 @objc protocol MYSQLiteDelegate
 {
     @objc optional func registerInsertedSuccessfuly(message: String, error: Bool)
+    @objc optional func getSearchResult(name: String, level: String, id: Int)
+    @objc optional func upDateIsSuccessfuly(_ bool: Bool)
 }
 
 class MySQLite
@@ -27,15 +29,15 @@ class MySQLite
     
     var delegate: MYSQLiteDelegate?
     
-    //MARK: - Create Database
+    //MARK: - Create Table
     func createDatabase()
     {
-        print(pathArquivo)
+        print(pathArchive)
         
         //Verifying that the file exists
-        if FileManager.default.fileExists(atPath: pathArquivo)
+        if FileManager.default.fileExists(atPath: pathArchive)
         {
-            if sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK
+            if sqlite3_open(pathArchive, &dataBase) == SQLITE_OK
             {
                 print("Database is open")
             }
@@ -47,7 +49,7 @@ class MySQLite
         else
         {
             //If the bank not exist, so create bank
-            if sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK
+            if sqlite3_open(pathArchive, &dataBase) == SQLITE_OK
             {
                 let command = "create table if not exists DEVROOM (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, occupation TEXT, level TEXT, age INTEGER, register INTEGER UNIQUE)"
                 
@@ -108,8 +110,7 @@ class MySQLite
                 
                 //self.arrayData.append(dictionary)
                 
-                self.arrayData.append(SQLiteModel(name: name, occupation: occupation, level: level, age: age, register: register))
-                
+                self.arrayData.append(SQLiteModel(name: name, occupation: occupation, level: level, age: age, register: register, id: id))
                 
             }
             sqlite3_finalize(result!)
@@ -143,6 +144,70 @@ class MySQLite
             self.delegate?.registerInsertedSuccessfuly!(message: "Verifique se o número de registro já existe.", error: true)
             
             print("Error adding values:", sqlite3_errmsg(dataBase))
+        }
+    }
+    
+    //MARK: - select
+    func selectWith(query: String)
+    {
+        var result: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(dataBase, query, -1, &result, nil) == SQLITE_OK
+        {
+            self.arrayData.removeAll()
+            
+            while sqlite3_step(result) == SQLITE_ROW
+            {
+                let id = Int(sqlite3_column_int(result, 0))
+                
+                let resultName = sqlite3_column_text(result, 1)
+                let name = String(cString: resultName!)
+                
+                let resultOccupation = sqlite3_column_text(result, 2)
+                let occupation = String(cString: resultOccupation!)
+                
+                let resultLevel = sqlite3_column_text(result, 3)
+                let level = String(cString: resultLevel!)
+                
+                let age = Int(sqlite3_column_int(result, 4))
+                
+                let register = Int(sqlite3_column_int(result, 5))
+                
+                print("Values of serch", id, name, occupation, level, age, register)
+                
+                self.arrayData.append(SQLiteModel(name: name, occupation: occupation, level: level, age: age, register: register, id: id))
+                
+                if self.delegate != nil
+                {
+                    self.delegate?.getSearchResult!(name: name, level: level, id: id)
+                }
+                
+            }
+            
+            
+        }
+        else
+        {
+            print("Erro na pesquisa")
+        }
+    }
+    
+    //MARK: - upDate
+    func upDate(level: String, id: Int)
+    {
+        let query = "update DEVROOM SET level = '\(level)' WHERE id = \(id)"
+        
+        print(query)
+        
+        if sqlite3_exec(dataBase, query, nil, nil, nil) == SQLITE_OK
+        {
+            self.delegate?.upDateIsSuccessfuly!(true)
+            print("Update is sucessfully")
+        }
+        else
+        {
+            self.delegate?.upDateIsSuccessfuly!(false)
+            print("Erro UPDate: \(sqlite3_errmsg(dataBase))")
         }
     }
     
