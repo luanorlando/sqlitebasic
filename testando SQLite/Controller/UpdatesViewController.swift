@@ -95,7 +95,11 @@ extension UpdatesViewController: UISearchBarDelegate
                 self.database.delegate = self
                 self.database.selectWith(query: query)
                 self.array = self.database.arrayData
-                self.idDatabase = self.database.arrayData[0].getId()
+                if self.array.count > 0
+                {
+                    self.idDatabase = self.database.arrayData[0].getId()
+                }
+                
                 self.performSegue(withIdentifier: "segueDetailsSearch2", sender: nil)
             default:
                 self.query = "select *from DEVROOM WHERE name LIKE '\(String(describing: self.searchBarLetter.text!))%'"
